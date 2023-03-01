@@ -9,8 +9,8 @@ def recursion(text,st, ed, cnt):
 n = int(input())
 for i in range(n):
     word = input()
-    cnt = 1
-    a, b = recursion(word, 0, len(word)-1, cnt)
+    count = 1
+    a, b = recursion(word, 0, len(word)-1, count)
     print(a, b)
     
     
