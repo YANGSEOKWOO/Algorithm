@@ -75,5 +75,7 @@ for i in range(n):
     k = int(input())
     if k == 0:
         print(delete())
+        print(f"heap : {heap}")
     else:
         insert(k)
+        print(f"heap : {heap}")
