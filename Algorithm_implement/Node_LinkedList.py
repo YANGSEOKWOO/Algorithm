@@ -51,4 +51,3 @@ class LinkedList:
         node = self.get_node(index-1)
         node.next = node.next.next
 
-
