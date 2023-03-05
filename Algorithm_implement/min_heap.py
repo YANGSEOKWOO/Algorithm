@@ -1,4 +1,4 @@
-# https://www.acmicpc.net/problem/11279
+# https://www.acmicpc.net/problem/1927
 import sys
 input = sys.stdin.readline
 # x가 자연수라면 배열에 x라는 값을 넣는 연산!!
@@ -14,7 +14,7 @@ def insert(n):
     # while 조건 : insert를 한다면 결국 루트까지는 가야한다는 것 
     while idx != 0:
         # 부모와 비교해서 부모보다 크다면 값을 바꾸고
-        if heap[idx] > heap[(idx-1)//2]:
+        if heap[idx] < heap[(idx-1)//2]:
             temp = heap[idx]
             heap[idx] = heap[(idx-1)//2]
             heap[(idx-1)//2] = temp
@@ -45,7 +45,7 @@ def delete():
             return ret
         # 자식노드가 왼쪽만 있는 경우임
         if length%2 == 0 and idx == ((length//2)-1):
-            if heap[idx] < heap[2*idx +1]:
+            if heap[idx] > heap[2*idx +1]:
                 temp = heap[idx]
                 heap[idx] = heap[2*idx+1]
                 heap[2*idx+1] = temp
@@ -54,8 +54,8 @@ def delete():
                 return ret
         else:
             # 왼쪽이 더 큰경우
-            if heap[2*idx +1] > heap[2*idx+2]:
-                if heap[idx] < heap[2*idx +1]:
+            if heap[2*idx +1] < heap[2*idx+2]:
+                if heap[idx] > heap[2*idx +1]:
                     temp = heap[idx]
                     heap[idx] = heap[2*idx+1]
                     heap[2*idx+1] = temp
@@ -63,7 +63,7 @@ def delete():
                 else:
                     return ret
             else:
-                if heap[idx] < heap[2*idx +2]:
+                if heap[idx] > heap[2*idx +2]:
                     temp = heap[idx]
                     heap[idx] = heap[2*idx+2]
                     heap[2*idx+2] = temp
@@ -75,7 +75,5 @@ for i in range(n):
     k = int(input())
     if k == 0:
         print(delete())
-        print(f"heap : {heap}")
     else:
         insert(k)
-        print(f"heap : {heap}")
