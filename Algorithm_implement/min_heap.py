@@ -13,7 +13,7 @@ def insert(n):
     heap_ptr += 1
     # while 조건 : insert를 한다면 결국 루트까지는 가야한다는 것 
     while idx != 0:
-        # 부모와 비교해서 부모보다 크다면 값을 바꾸고
+        # 부모와 비교해서 부모보다 크다면 값을 바꾸고-
         if heap[idx] < heap[(idx-1)//2]:
             temp = heap[idx]
             heap[idx] = heap[(idx-1)//2]
