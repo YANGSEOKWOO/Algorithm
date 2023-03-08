@@ -12,7 +12,9 @@ n = int(input())
 for i in range(n):
     a, b = map(int, input().split())
     if a > b:
-        print(gcd(a,b))
+        k = gcd(a,b)
+        if k:
+            print
     else:
-        print(gcd(b,a))
+        k = gcd(a,b)
 
