@@ -48,43 +48,17 @@ poor = []
 for i in range(n):
     num = int(input())
     dic[num] += 1
-# for key, value in dic.items():
-#     if value >= 2:
-#         extra[key] = value
-#     elif key > n:
-        
-#     elif value == 0 and key<=n:
-#         poor.append(key)
-# sorted_extra = sorted(extra.items())
-# print(sorted_extra)
-# poor.sort()
-# print(poor)
-# anw = 0
-# cnt = 0
-# for key, value in sorted_extra:
-#     print(f'key:{key} value:{value}')
-#     for i in range(value-1):
-#         print(f'poor[cnt]: {poor[cnt]}')
-#         anw += abs(key-poor[cnt])
-#         cnt += 1
-
-# print(anw)
 for key in list(dic.keys()):
     if dic[key] == 0:
         del dic[key]
 sorted_extra = sorted(dic.items())
-# print(sorted_extra)
 poor = [i for i in range(1, n+1)]
-# print(poor)
 anw = 0
 cnt = 0
 for key, value in sorted_extra:
-    # print(f'key:{key} value:{value}')
     for i in range(value):
-        # print(f'poor[cnt]: {poor[cnt]}')
         anw += abs(key-poor[cnt])
         cnt += 1
-
 print(anw)
 
 
