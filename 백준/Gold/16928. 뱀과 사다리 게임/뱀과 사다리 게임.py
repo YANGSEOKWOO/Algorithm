@@ -84,8 +84,6 @@ def bfs():
             if search_idx <= 100 and not visited[search_idx]:
                 ladder_check = isLadder(search_idx)
                 if ladder_check:
-                    if visited[ladder_check]:
-                        continue
                     queue.append((ladder_check, cnt +1))
                     visited[search_idx] = True
                     dp[search_idx] = cnt +1
