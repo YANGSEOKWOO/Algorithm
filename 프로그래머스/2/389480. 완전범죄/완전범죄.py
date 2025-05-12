@@ -1,19 +1,27 @@
 # 1. a: 내림차순으로 정렬
 # 2. a가 같다면, b는 오름차순
+import math
+
 def solution(info, n, m):
-    sort_info = sorted(info, key= lambda x: (-(x[0]-x[1])))
-    print(sort_info)
+    INF = float('inf')
+    items = len(info)
+    # dp[i][j]: i개의 물건을 처리했을 때, B의 흔적이 j일 때의 A의 누적 흔적
+    dp = [[INF]*m for _ in range(items+1)]
+    dp[0][0] = 0
     
-    a_cnt = n
-    b_cnt = m
-    a_recur = 0
-    for a_info, b_info in sort_info:
-        if b_cnt > b_info:
-            b_cnt -= b_info
-        else:
-            if a_cnt > a_info:
-                a_cnt -= a_info
-                a_recur += a_info
-            else:
-                return -1
-    return a_recur
+    for i in range(1, items+1):
+        a, b = info[i-1]
+        for j in range(m):
+            
+            # A가 i를 골랐을 때
+            check_a = dp[i-1][j] + a
+            if n > check_a:
+                dp[i][j] = min(dp[i][j], check_a)
+            
+            # B가 i를 골랐을 때
+            if m > j+b:
+                dp[i][j+b] = min(dp[i][j+b], dp[i-1][j])
+    k = min(dp[len(info)])
+    if k == INF:
+        return -1
+    return k
